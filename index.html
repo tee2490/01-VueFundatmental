@@ -1,39 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html>
+  <head>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-</head>
-
-<body>
+  </head>
+  <body>
     <div id="app">
-        <p>Lucky Number List : {{luckyNumbers[0]}}</p>
-        <p>{{employee.name}} is {{employee.age}} years old.</p>
-        <p>Random Number from 1-10: {{ getRandomLuckyNumber() }}</p>
+      <h1>{{getMessage()}}</h1>
+      <p>Lucky Number : {{luckyNumber}}</p>
+      <p>
+        Lucky Number is an {{luckyNumber%2==0?"even number" : "odd number"}}
+      </p>
+      <p>{{updateLuckyNumber()}}</p>
+      <p>{{employee.name}} is {{employee.age}} years old.</p>
     </div>
-</body>
-<script>
-    const { createApp } = Vue;
+  </body>
+  <script>
+    const { createApp, ref } = Vue;
+
     createApp({
-        setup() {
-            const luckyNumbers = [3, 7, 9, 11];       // array
-            const employee = {                        // object
-                name: "John",
-                age: 30,
-                salary: 50000,
-            };
+      setup() {
+        const message = "Hello Vue!";
+        let luckyNumber = ref(6);
 
-            function getRandomLuckyNumber() {        //function in Vue
-                return Math.floor(Math.random() * 10) + 1;
-            }
+        const employee = {
+          name: "John",
+          age: 30,
+          salary: 50000,
+        };
 
-            return {
-                luckyNumbers,
-                employee,
-                getRandomLuckyNumber
-            };
+        function updateLuckyNumber() {
+          setTimeout(() => {
+            luckyNumber.value = 77;
+          }, 2000);
         }
-    }).mount('#app');
-</script>
 
+        function getMessage() {
+          return message.toUpperCase();
+        }
+
+        return {
+          getMessage,
+          luckyNumber,
+          employee,
+          updateLuckyNumber,
+        };
+      },
+    }).mount("#app");
+  </script>
 </html>
