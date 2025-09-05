@@ -9,6 +9,7 @@
     <div id="app">
         <p>Lucky Number List : {{luckyNumbers[0]}}</p>
         <p>{{employee.name}} is {{employee.age}} years old.</p>
+        <p>Random Number from 1-10: {{ getRandomLuckyNumber() }}</p>
     </div>
 </body>
 <script>
@@ -21,9 +22,15 @@
                 age: 30,
                 salary: 50000,
             };
+
+            function getRandomLuckyNumber() {        //function in Vue
+                return Math.floor(Math.random() * 10) + 1;
+            }
+
             return {
                 luckyNumbers,
                 employee,
+                getRandomLuckyNumber
             };
         }
     }).mount('#app');
