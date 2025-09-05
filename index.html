@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  </head>
-  <body>
-    <div id="app">
-      <div v-bind:style="{backgroundColor: 'aqua', fontSize: '40px'}">
-        Hello World
-      </div>
-      <div v-bind:style="{'background-color': 'aqua', 'font-size': '40px'}">
-        Hello World
-      </div>
-    </div>
-  </body>
-  <script>
-    const { createApp, ref, reactive } = Vue;
+<html lang="en">
 
+<head>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>Lucky Number List : {{luckyNumbers[0]}}</p>
+        <p>{{employee.name}} is {{employee.age}} years old.</p>
+    </div>
+</body>
+<script>
+    const { createApp } = Vue;
     createApp({
-      setup() {
-        return {};
-      },
-    }).mount("#app");
-  </script>
+        setup() {
+            const luckyNumbers = [3, 7, 9, 11];       // array
+            const employee = {                        // object
+                name: "John",
+                age: 30,
+                salary: 50000,
+            };
+            return {
+                luckyNumbers,
+                employee,
+            };
+        }
+    }).mount('#app');
+</script>
+
 </html>
