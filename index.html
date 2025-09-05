@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-
-<head>
+<html>
+  <head>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-</head>
-
-<body>
+  </head>
+  <body>
     <div id="app">
-        <h1>{{message}}</h1>
+      <div v-bind:style="{backgroundColor: 'aqua', fontSize: '40px'}">
+        Hello World
+      </div>
+      <div v-bind:style="{'background-color': 'aqua', 'font-size': '40px'}">
+        Hello World
+      </div>
     </div>
-</body>
-<script>
-    const { createApp } = Vue;
-    createApp({
-        setup() {
-            return { message: "Hello Vue!" };
-        }
-    }).mount('#app');
-</script>
+  </body>
+  <script>
+    const { createApp, ref, reactive } = Vue;
 
+    createApp({
+      setup() {
+        return {};
+      },
+    }).mount("#app");
+  </script>
 </html>
